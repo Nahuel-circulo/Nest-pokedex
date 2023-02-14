@@ -7,10 +7,18 @@ async function bootstrap() {
 
   app.setGlobalPrefix('api')
 
+
+  // transform y transformOptions es para convertir tipos de datos
+  // que fluyen por los dtos
+
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,
       forbidNonWhitelisted: true,
+      transform: true,
+      transformOptions: {
+        enableImplicitConversion: true
+      }
     })
   );
 
